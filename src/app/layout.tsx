@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body className={`${manrope.variable} antialiased bg-background text-foreground font-sans`}>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

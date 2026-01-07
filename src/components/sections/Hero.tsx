@@ -14,11 +14,6 @@ export function Hero() {
       {/* Animated Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-neon-green/20 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Logo */}
-      <div className="absolute top-6 left-6 z-30">
-        <img src="/neuraz-logo.png" alt="Neuraz Logo" className="h-8 md:h-10 w-auto opacity-90 hover:opacity-100 transition-opacity" />
-      </div>
-
       <div className="container relative z-20 px-4 md:px-6 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

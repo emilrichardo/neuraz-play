@@ -10,11 +10,11 @@ const features = [
   },
   {
     title: "Integración Total",
-    description: "Se conecta con tu sistema de caja (POS), redes sociales y CRMs. Datos sincronizados."
+    description: "Conectamos con POS, Redes Sociales, WhatsApp, Bases de datos y CRMs. Todo sincronizado vía API."
   },
   {
     title: "Operación Neuraz",
-    description: "Tú te encargas de tu negocio, nosotros de la experiencia. Soporte y operación 100% incluida."
+    description: "Tú te encargas de tu negocio, nosotros de la experiencia. Soporte, operación y actualizaciones incluidas."
   }
 ]
 

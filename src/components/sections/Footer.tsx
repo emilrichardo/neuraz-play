@@ -5,7 +5,7 @@ import { ArrowRight, Instagram, Linkedin, Twitter } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-black border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
+    <footer id="contacto" className="bg-black border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-neon-green to-transparent opacity-50" />
 
       <div className="container px-4 md:px-6 relative z-10">
@@ -21,7 +21,7 @@ export function Footer() {
 
             <div className="flex gap-4">
                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-sm text-gray-400">
-                 📍 Buenos Aires, Argentina
+                 📍 Santiago del Estero, Argentina
                </div>
                <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-sm text-gray-400">
                  📧 contacto@neuraz.com
@@ -66,7 +66,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <img src="/neuraz-logo.png" alt="Neuraz Logo" className="h-8 w-auto" />
+            <img src="/neuraz-logo.png" alt="Neuraz Logo" className="h-7 w-auto" />
           </div>
 
           <div className="flex gap-6 text-gray-400">

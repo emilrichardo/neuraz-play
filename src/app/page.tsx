@@ -1,21 +1,29 @@
+import { Navbar } from "@/components/layout/Navbar"
 import { Hero } from "@/components/sections/Hero"
 import { Philosophy } from "@/components/sections/Philosophy"
 import { Motors } from "@/components/sections/Motors"
+import { Proposal } from "@/components/sections/Proposal"
 import { UseCases } from "@/components/sections/UseCases"
 import { ZeroFriction } from "@/components/sections/ZeroFriction"
+import { Process } from "@/components/sections/Process"
 import { Results } from "@/components/sections/Results"
 import { Footer } from "@/components/sections/Footer"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-neon-green selection:text-black">
-      <Hero />
-      <Philosophy />
-      <Motors />
-      <UseCases />
-      <ZeroFriction />
-      <Results />
-      <Footer />
+      <Navbar />
+      <div className="max-w-[1440px] mx-auto">
+        <Hero />
+        <Philosophy />
+        <Motors />
+        <Proposal />
+        <UseCases />
+        <ZeroFriction />
+        <Process />
+        <Results />
+        <Footer />
+      </div>
     </main>
   )
 }
