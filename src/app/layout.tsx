@@ -11,6 +11,9 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Neuraz | Transformación Digital Experiencial",
   description: "Convertimos clientes en jugadores. Sistemas a medida que combinan Tecnología, Gamificación, IA y Automatización.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -1,9 +1,36 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/Button"
 import { ArrowRight, Instagram, Linkedin, Twitter } from "lucide-react"
 
 export function Footer() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    message: ""
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const text = `Hola Neuraz! 👋\n\nMi nombre es *${formData.name}* de la empresa *${formData.company}*.\n\n📝 Mensaje: ${formData.message}`
+    const encodedText = encodeURIComponent(text)
+    const whatsappUrl = `https://web.whatsapp.com/send?phone=543855963036&text=${encodedText}`
+
+    // Fallback for mobile if web.whatsapp.com doesn't work well
+    const mobileWhatsappUrl = `https://wa.me/543855963036?text=${encodedText}`
+
+    // Check if it's a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    window.open(isMobile ? mobileWhatsappUrl : whatsappUrl, "_blank")
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
   return (
     <footer id="contacto" className="bg-black border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-neon-green to-transparent opacity-50" />
@@ -33,30 +60,37 @@ export function Footer() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green/10 rounded-full blur-[50px] pointer-events-none" />
 
             <h3 className="text-2xl font-bold text-white mb-6">Agenda una demo estratégica</h3>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Nombre"
+                  required
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors placeholder:text-gray-600"
                 />
                 <input
                   type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
                   placeholder="Empresa"
+                  required
                   className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors placeholder:text-gray-600"
                 />
               </div>
-              <input
-                type="email"
-                placeholder="Email corporativo"
-                className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors placeholder:text-gray-600"
-              />
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="¿Qué desafío quieres resolver?"
                 rows={4}
+                required
                 className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors resize-none placeholder:text-gray-600"
               />
-              <Button variant="cyber" className="w-full h-14 text-lg">
+              <Button type="submit" variant="cyber" className="w-full h-14 text-lg">
                 Solicitar Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

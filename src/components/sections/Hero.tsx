@@ -3,21 +3,27 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/Button"
 import { ArrowRight, Play } from "lucide-react"
+import Image from "next/image"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
-      {/* Background Grid & Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-background/50 to-background z-10 pointer-events-none" />
+    <section className=" min-h-screen flex items-center overflow-hidden bg-background pt-20">
+      {/* Background Image */}
+      <div className="lg:absolute inset-0 z-0 ">
+        <Image
+          src="/images/hero-bg.png"
+          alt="Neuraz Play Hero Background"
+          fill
+          className="object-cover object-right w-screen h-full "
+          priority
+        />
 
-      {/* Animated Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-neon-green/20 rounded-full blur-[120px] pointer-events-none" />
+      </div>
 
-      <div className="container relative z-20 px-4 md:px-6 flex flex-col items-center text-center">
+      <div className="container relative z-20 px-4 md:px-6 flex flex-col items-start text-left">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           className="inline-flex items-center rounded-full border border-neon-green/30 bg-neon-green/10 px-3 py-1 text-sm text-neon-green mb-8 backdrop-blur-sm"
         >
@@ -26,28 +32,28 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl md:text-7xl font-bold tracking-tight mb-6 max-w-5xl"
+          className="text-4xl md:text-7xl font-bold tracking-tight mb-6 max-w-3xl"
         >
-          Convertimos clientes en <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]">jugadores</span>.
+          Convertimos <span className="block"></span> clientes  en <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]">jugadores</span>.
           <br />
-          Y jugadores en <span className="text-white">clientes fieles</span>.
+          Y jugadores en <span className="block"></span><span className="text-white">clientes fieles</span>.
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mb-10"
+          className="text-lg md:text-xl text-gray-300 max-w-2xl mb-10"
         >
           Transformación digital experiencial. Fusionamos Gamificación, Inteligencia Artificial y Pantallas Interactivas para crear sistemas que venden solos.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4"
         >
@@ -62,23 +68,15 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* HUD Elements */}
-      <div className="absolute bottom-10 left-10 hidden md:block opacity-50 pointer-events-none">
-        <div className="flex items-center gap-2 text-neon-green font-mono text-xs">
+      {/* HUD Elements - Adjusted for left alignment */}
+      <div className="absolute bottom-10 right-10 hidden md:block opacity-50 pointer-events-none z-20">
+        <div className="flex items-center gap-2 text-neon-green font-mono text-xs justify-end">
           <div className="w-2 h-2 bg-neon-green rounded-full animate-ping" />
           SYSTEM: ONLINE
         </div>
-        <div className="h-px w-32 bg-neon-green/50 mt-2" />
-        <div className="text-[10px] text-neon-green/70 mt-1 font-mono">
+        <div className="h-px w-32 bg-neon-green/50 mt-2 ml-auto" />
+        <div className="text-[10px] text-neon-green/70 mt-1 font-mono text-right">
           CPU: 34% // MEM: 12GB
-        </div>
-      </div>
-
-      <div className="absolute top-1/2 right-10 -translate-y-1/2 hidden md:block opacity-30 pointer-events-none">
-        <div className="flex flex-col gap-2">
-           {[...Array(5)].map((_, i) => (
-             <div key={i} className="w-1 h-8 bg-neon-cyan/50 rounded-full" style={{ opacity: 0.2 * (i + 1) }} />
-           ))}
         </div>
       </div>
     </section>

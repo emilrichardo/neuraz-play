@@ -1,0 +1,19 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="favicon-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00ff9d" />
+      <stop offset="1" stop-color="#00f3ff" />
+    </linearGradient>
+    <mask id="brain-mask">
+      <path d="M16 2C8.268 2 2 8.268 2 16C2 23.732 8.268 30 16 30C23.732 30 30 23.732 30 16C30 8.268 23.732 2 16 2ZM16 28C9.373 28 4 22.627 4 16C4 9.373 9.373 4 16 4C22.627 4 28 9.373 28 16C28 22.627 22.627 28 16 28Z" fill="white"/>
+      <path d="M12 10C10.895 10 10 10.895 10 12C10 13.105 10.895 14 12 14C13.105 14 14 13.105 14 12C14 10.895 13.105 10 12 10ZM20 10C18.895 10 18 10.895 18 12C18 13.105 18.895 14 20 14C21.105 14 22 13.105 22 12C22 10.895 21.105 10 20 10ZM16 16C14.343 16 13 17.343 13 19C13 20.657 14.343 22 16 22C17.657 22 19 20.657 19 19C19 17.343 17.657 16 16 16Z" fill="white"/>
+    </mask>
+  </defs>
+  <rect width="32" height="32" fill="url(#favicon-gradient)" mask="url(#brain-mask)" />
+  <!-- Simplified brain-like pattern -->
+  <path d="M16 6C10.477 6 6 10.477 6 16C6 21.523 10.477 26 16 26C21.523 26 26 21.523 26 16C26 10.477 21.523 6 16 6ZM16 24C11.582 24 8 20.418 8 16C8 11.582 11.582 8 16 8C20.418 8 24 11.582 24 16C24 20.418 20.418 24 16 24Z" fill="url(#favicon-gradient)"/>
+  <circle cx="12" cy="13" r="2" fill="url(#favicon-gradient)"/>
+  <circle cx="20" cy="13" r="2" fill="url(#favicon-gradient)"/>
+  <circle cx="16" cy="19" r="3" fill="url(#favicon-gradient)"/>
+  <path d="M10 16C10 16 12 18 16 18C20 18 22 16 22 16" stroke="url(#favicon-gradient)" stroke-width="2" stroke-linecap="round"/>
+</svg>

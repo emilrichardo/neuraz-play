@@ -15,8 +15,8 @@ export function Philosophy() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              No trabajamos con soluciones genéricas. <br />
-              <span className="text-neon-violet drop-shadow-[0_0_10px_rgba(176,38,255,0.5)]">Construimos experiencias.</span>
+
+              <span className="text-neon-violet drop-shadow-[0_0_10px_rgba(176,38,255,0.5)]">Construimos experiencias</span>
             </h2>
             <p className="text-gray-400 text-lg mb-6">
               En Neuraz diseñamos y desarrollamos sistemas digitales a medida que combinan tecnología, automatización, gamificación e inteligencia artificial para transformar la forma en que las marcas interactúan con sus clientes.
