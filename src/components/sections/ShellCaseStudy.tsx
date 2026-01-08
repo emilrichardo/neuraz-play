@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { Play, Pause, ChevronLeft, ChevronRight, Maximize2, X, Trophy, Star, Gift } from "lucide-react"
+import { Play, Pause, ChevronLeft, ChevronRight, Maximize2, X, Trophy, Star, Gift, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 
 const IMAGES = [
@@ -79,6 +80,15 @@ export function ShellCaseStudy() {
                   o canjeando cupones, para acumular puntos o chances y acceder a premios.
                 </p>
               </div>
+            </div>
+
+            <div className="mt-8">
+              <Link href="https://test-shellcabildo.neuraz.io/login" target="_blank" rel="noopener noreferrer">
+                <Button variant="cyber" size="lg" className="w-full md:w-auto group">
+                  Probar el Sistema
+                  <ExternalLink className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
 
