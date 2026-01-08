@@ -7,6 +7,7 @@ import { ChatbotService } from "@/components/sections/ChatbotService"
 import { ServiceShowcase } from "@/components/sections/ServiceShowcase"
 import { Proposal } from "@/components/sections/Proposal"
 import { UseCases } from "@/components/sections/UseCases"
+import { ShellCaseStudy } from "@/components/sections/ShellCaseStudy"
 import { ZeroFriction } from "@/components/sections/ZeroFriction"
 import { Process } from "@/components/sections/Process"
 import { Results } from "@/components/sections/Results"
@@ -26,6 +27,7 @@ export default function Home() {
         <GameDemo />
         <ChatbotService />
         <UseCases />
+        <ShellCaseStudy />
         <ZeroFriction />
         <Process />
         <Results />
