@@ -40,7 +40,7 @@ export function ShellCaseStudy() {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden bg-black">
+    <section id="casos" className="py-24 relative overflow-hidden bg-black">
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,0,0,0.15),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(255,213,0,0.1),transparent_60%)]" />
