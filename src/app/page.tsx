@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar"
 import { Hero } from "@/components/sections/Hero"
 import { Philosophy } from "@/components/sections/Philosophy"
 import { Motors } from "@/components/sections/Motors"
+import { GameDemo } from "@/components/sections/GameDemo"
 import { ServiceShowcase } from "@/components/sections/ServiceShowcase"
 import { Proposal } from "@/components/sections/Proposal"
 import { UseCases } from "@/components/sections/UseCases"
@@ -18,8 +19,10 @@ export default function Home() {
         <Hero />
         <Philosophy />
         <Motors />
+
         <ServiceShowcase />
         <Proposal />
+        <GameDemo />
         <UseCases />
         <ZeroFriction />
         <Process />

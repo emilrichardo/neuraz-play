@@ -33,9 +33,7 @@ export function Philosophy() {
               </ul>
             </div>
 
-            <p className="text-gray-400 text-lg border-l-4 border-neon-green pl-4 italic">
-              "Si se puede imaginar, lo podemos desarrollar."
-            </p>
+
           </motion.div>
 
           <motion.div

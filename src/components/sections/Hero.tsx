@@ -9,12 +9,12 @@ export function Hero() {
   return (
     <section className=" min-h-screen flex items-center overflow-hidden bg-background pt-20">
       {/* Background Image */}
-      <div className="lg:absolute inset-0 z-0 ">
+      <div className="absolute h-1/2 md:h-full inset-0 z-0 ">
         <Image
           src="/images/hero-bg.png"
           alt="Neuraz Play Hero Background"
           fill
-          className="object-cover object-right w-screen h-full "
+          className="object-cover object-right w-screen h-full   "
           priority
         />
 
@@ -37,7 +37,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl md:text-7xl font-bold tracking-tight mb-6 max-w-3xl"
         >
-          Convertimos <span className="block"></span> clientes  en <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]">jugadores</span>.
+          Convertimos <span className="block"></span> clientes  en <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]">jugadores</span>
           <br />
           Y jugadores en <span className="block"></span><span className="text-white">clientes fieles</span>.
         </motion.h1>
@@ -57,14 +57,12 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4"
         >
+          <a href="#contacto">
           <Button variant="cyber" size="lg" className="group">
             Gamificar mi negocio
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button variant="outline" size="lg" className="group border-white/20 text-white hover:bg-white/10 hover:text-white">
-            <Play className="mr-2 h-4 w-4" />
-            Ver demo en vivo
-          </Button>
+</a>
         </motion.div>
       </div>
 
