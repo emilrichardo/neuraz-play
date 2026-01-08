@@ -104,6 +104,7 @@ export function ShellCaseStudy() {
               <video
                 ref={videoRef}
                 src="/videos/shell.mp4"
+                poster="/images/shell/video-poster.png"
                 className="w-full h-full object-cover"
                 loop
                 muted={!isPlaying}
@@ -164,10 +165,10 @@ export function ShellCaseStudy() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[400px] md:h-[500px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[200px] md:h-[300px]">
             {/* Main Featured Image */}
             <div
-              className="md:col-span-2 relative rounded-2xl overflow-hidden border border-white/10 group cursor-pointer"
+              className="relative rounded-2xl overflow-hidden border border-white/10 group cursor-pointer"
               onClick={() => setIsGalleryOpen(true)}
             >
               <Image

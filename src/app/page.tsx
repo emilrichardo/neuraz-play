@@ -21,15 +21,14 @@ export default function Home() {
         <Hero />
         <Philosophy />
         <Motors />
-
         <ServiceShowcase />
         <Proposal />
         <GameDemo />
-        <ChatbotService />
-        <UseCases />
         <ShellCaseStudy />
+        <UseCases />
         <ZeroFriction />
         <Process />
+        <ChatbotService />
         <Results />
         <Footer />
       </div>
