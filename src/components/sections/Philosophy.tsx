@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Brain, Zap } from "lucide-react"
 
 export function Philosophy() {
@@ -44,27 +45,41 @@ export function Philosophy() {
             className="relative"
           >
             <div className="absolute inset-0 bg-neon-violet/20 blur-[100px] rounded-full pointer-events-none" />
-            <div className="relative bg-card-bg/80 border border-card-border p-8 rounded-2xl backdrop-blur-md shadow-2xl space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-neon-violet/10 rounded-lg text-neon-violet border border-neon-violet/20">
-                  <Brain className="w-8 h-8" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">IA Integrada</h3>
-                  <p className="text-gray-400">
-                    La IA no es un extra: es parte del sistema. Análisis de comportamiento, personalización en tiempo real y toma de decisiones automática.
-                  </p>
-                </div>
+
+            <div className="relative overflow-hidden rounded-2xl border border-card-border shadow-2xl group">
+              {/* Image Background */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src="/images/philosophy-experience.jpg"
+                  alt="Experiencia Neuraz"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
               </div>
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-neon-cyan/10 rounded-lg text-neon-cyan border border-neon-cyan/20">
-                  <Zap className="w-8 h-8" />
+
+              <div className="relative z-10 p-8 pt-32 space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-neon-violet/20 rounded-lg text-neon-violet border border-neon-violet/30 backdrop-blur-sm">
+                    <Brain className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md">IA Integrada</h3>
+                    <p className="text-gray-300 text-sm leading-relaxed drop-shadow-sm">
+                      La IA no es un extra: es parte del sistema. Análisis de comportamiento, personalización en tiempo real y toma de decisiones automática.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Automatización Total</h3>
-                  <p className="text-gray-400">
-                    Flujos automáticos de ventas, atención y fidelización. Respuestas inteligentes vía chatbots y asistentes virtuales.
-                  </p>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-neon-cyan/20 rounded-lg text-neon-cyan border border-neon-cyan/30 backdrop-blur-sm">
+                    <Zap className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md">Automatización Total</h3>
+                    <p className="text-gray-300 text-sm leading-relaxed drop-shadow-sm">
+                      Flujos automáticos de ventas, atención y fidelización. Respuestas inteligentes vía chatbots y asistentes virtuales.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
