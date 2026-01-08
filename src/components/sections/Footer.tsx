@@ -103,11 +103,7 @@ export function Footer() {
             <img src="/neuraz-logo.png" alt="Neuraz Logo" className="h-7 w-auto" />
           </div>
 
-          <div className="flex gap-6 text-gray-400">
-            <a href="#" className="hover:text-neon-green transition-colors hover:scale-110 transform"><Instagram className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-neon-green transition-colors hover:scale-110 transform"><Linkedin className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-neon-green transition-colors hover:scale-110 transform"><Twitter className="w-5 h-5" /></a>
-          </div>
+
 
           <div className="text-gray-500 text-sm">
             © 2026 Neuraz. Todos los derechos reservados.
