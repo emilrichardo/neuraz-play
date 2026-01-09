@@ -10,7 +10,8 @@ import { UseCases } from "@/components/sections/UseCases"
 import { ShellCaseStudy } from "@/components/sections/ShellCaseStudy"
 import { ZeroFriction } from "@/components/sections/ZeroFriction"
 import { Process } from "@/components/sections/Process"
-import { Results } from "@/components/sections/Results"
+import { Results } from "@/components/sections/Results";
+import { AboutUs } from "@/components/sections/AboutUs";
 import { Footer } from "@/components/sections/Footer"
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
         <Process />
         <ChatbotService />
         <Results />
+        <AboutUs />
         <Footer />
       </div>
     </main>

@@ -31,6 +31,7 @@ export function Navbar() {
           <a href="#filosofia" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</a>
           <a href="#servicios" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</a>
           <a href="#casos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</a>
+          <a href="#about-us" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</a>
           <a href="#contacto">
             <Button variant="cyber" size="sm" className="h-9">
               Agenda Demo
