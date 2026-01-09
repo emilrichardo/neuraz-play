@@ -15,7 +15,7 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute h-1/2 md:h-full inset-0 z-0 ">
         <Image
-          src="/images/hero-bg.png"
+          src={content.hero.image || "/images/hero-bg.png"}
           alt="Neuraz Play Hero Background"
           fill
           className="object-cover object-right w-screen h-full   "
@@ -41,11 +41,11 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl md:text-7xl font-bold tracking-tight mb-6 max-w-3xl"
         >
-          {content.hero.title}
+          <span dangerouslySetInnerHTML={{ __html: content.hero.title }} />
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]">
-            {content.hero.subtitle}
-          </span>
+          <span
+            dangerouslySetInnerHTML={{ __html: content.hero.subtitle || "" }}
+          />
         </motion.h1>
 
         <motion.p
@@ -53,9 +53,8 @@ export function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-lg md:text-xl text-gray-300 max-w-2xl mb-10"
-        >
-          {content.hero.description}
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: content.hero.description }}
+        />
 
         <motion.div
           initial={{ opacity: 0, x: -20 }}

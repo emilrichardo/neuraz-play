@@ -49,3 +49,11 @@ body {
   border: 1px solid currentColor;
   box-shadow: 0 0 10px -2px currentColor;
 }
+
+.text-neon-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan drop-shadow-[0_0_10px_rgba(0,255,157,0.5)];
+}
+
+.border-card-border{
+  @apply border-gray-600/20;
+}

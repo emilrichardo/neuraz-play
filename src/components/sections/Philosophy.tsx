@@ -20,19 +20,23 @@ export function Philosophy() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-
-              <span className="text-neon-violet drop-shadow-[0_0_10px_rgba(176,38,255,0.5)]">{content.philosophy.title}</span>
+              <span
+                className="text-neon-violet drop-shadow-[0_0_10px_rgba(176,38,255,0.5)]"
+                dangerouslySetInnerHTML={{ __html: content.philosophy.title }}
+              />
             </h2>
-            <p className="text-gray-400 text-lg mb-6">
-              {content.philosophy.description}
-            </p>
+            <p
+              className="text-gray-400 text-lg mb-6"
+              dangerouslySetInnerHTML={{ __html: content.philosophy.description }}
+            />
 
             <div className="space-y-4 mb-8">
               <h3 className="text-xl font-bold text-white">Creamos plataformas inteligentes capaces de:</h3>
               <ul className="space-y-2 text-gray-400">
                 {content.philosophy.features.map((feature, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> {feature}
+                    <span className="w-1.5 h-1.5 rounded-full bg-neon-green" />
+                    <span dangerouslySetInnerHTML={{ __html: feature }} />
                   </li>
                 ))}
               </ul>
@@ -50,11 +54,11 @@ export function Philosophy() {
           >
             <div className="absolute inset-0 bg-neon-violet/20 blur-[100px] rounded-full pointer-events-none" />
 
-            <div className="relative overflow-hidden rounded-2xl border border-card-border shadow-2xl group">
+            <div className="relative overflow-hidden h-full rounded-2xl border border-card-border shadow-2xl group">
               {/* Image Background */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src="/images/philosophy-experience.jpg"
+                  src={content.philosophy.image || "/images/philosophy-experience.jpg"}
                   alt="Experiencia Neuraz"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -62,7 +66,7 @@ export function Philosophy() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
               </div>
 
-              <div className="relative z-10 p-8 pt-32 space-y-8">
+              <div className="relative z-10 p-8 pt-42 space-y-8">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-neon-violet/20 rounded-lg text-neon-violet border border-neon-violet/30 backdrop-blur-sm">
                     <Brain className="w-8 h-8" />

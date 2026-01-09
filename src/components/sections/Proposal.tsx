@@ -114,7 +114,7 @@ export function Proposal() {
   const { content } = usePersonalization()
 
   return (
-    <section className="py-24 bg-black/80 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,193,7,0.05)_0%,transparent_70%)] pointer-events-none" />
 

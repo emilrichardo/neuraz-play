@@ -45,18 +45,16 @@ export function Motors() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold mb-4"
-          >
-            {content.motors.title}
-          </motion.h2>
+            dangerouslySetInnerHTML={{ __html: content.motors.title }}
+          />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-gray-400 text-lg"
-          >
-            {content.motors.description}
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: content.motors.description }}
+          />
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -68,7 +66,7 @@ export function Motors() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <Card className={`h-full bg-card-bg/40 border-card-border transition-all duration-300 ${motor.borderColor} ${motor.shadow} group`}>
+              <Card className={`h-full bg-card-bg/20  transition-all duration-300 border-gray-200/20 ${motor.borderColor} ${motor.shadow} group`}>
                 <CardHeader>
                   <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 ${motor.color} group-hover:scale-110 transition-transform duration-300`}>
                     <motor.icon className="w-8 h-8" />

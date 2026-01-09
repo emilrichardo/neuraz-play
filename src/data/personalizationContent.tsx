@@ -6,6 +6,7 @@ export interface SectionContent {
   description: string
   cta?: string
   items?: string[]
+  image?: string
 }
 
 export interface SiteContent {
@@ -25,10 +26,11 @@ export interface SiteContent {
 const DEFAULT_CONTENT: SiteContent = {
   hero: {
     badge: "Sistema Operativo de Experiencias",
-    title: "Convertimos clientes en jugadores",
-    subtitle: "Y jugadores en clientes fieles.",
+    title: "Convertimos <br/>clientes en <span class='text-neon-gradient'>jugadores.</span>",
+    subtitle: "Y jugadores en<br/> <span class='text-neon-gradient'>clientes fieles.</span>",
     description: "Transformación digital experiencial. Fusionamos Gamificación, Inteligencia Artificial y Pantallas Interactivas para crear sistemas que venden solos.",
-    cta: "Gamificar mi negocio"
+    cta: "Gamificar mi negocio",
+    image: "/images/hero-bg.png"
   },
   philosophy: {
     title: "Construimos experiencias",
@@ -39,15 +41,16 @@ const DEFAULT_CONTENT: SiteContent = {
       "Responder en tiempo real",
       "Integrarse con cualquier sistema existente",
       "Escalar y adaptarse a cada negocio"
-    ]
+    ],
+    image: "/images/philosophy-experience.jpg"
   },
   motors: {
     title: "Nuestros Motores",
     description: "La tecnología detrás de la magia."
   },
   serviceShowcase: {
-    title: "Servicios",
-    description: "Soluciones integrales para tu transformación digital."
+    title: "Interfaces que",
+    description: "No solo diseñamos interfaces; creamos ecosistemas interactivos. Desde pantallas táctiles en puntos de venta hasta aplicaciones móviles gamificadas, cada píxel está pensado para maximizar el engagement y la conversión."
   },
   proposal: {
     title: "Propuesta de Valor",
@@ -119,6 +122,7 @@ export function getContent(rubroId: number | null, subrubroId: number | null, em
       content.hero.title = `Convertimos comensales en fans de ${empresa || "tu restaurante"}`
       content.hero.description = "Menús interactivos, reservas con IA y juegos para esperar la comida. Hacemos que ir a comer sea una experiencia inolvidable."
       content.hero.cta = "Gamificar mi menú"
+      // content.hero.image = "/images/gastronomy-hero.jpg" // Example of dynamic image
 
       content.philosophy.description = `En Neuraz creamos sistemas para que ${empresaName} no solo sirva comida, sino que sirva experiencias. Desde que el cliente reserva hasta que paga y deja su reseña.`
       content.philosophy.features = [
