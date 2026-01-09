@@ -53,8 +53,8 @@ const DEFAULT_CONTENT: SiteContent = {
     description: "No solo diseñamos interfaces; creamos ecosistemas interactivos. Desde pantallas táctiles en puntos de venta hasta aplicaciones móviles gamificadas, cada píxel está pensado para maximizar el engagement y la conversión."
   },
   proposal: {
-    title: "Propuesta de Valor",
-    description: "Por qué elegir Neuraz."
+    title: "Estrategia <span class='text-yellow-500'>Gamificadora</span>",
+    description: "Un plan de 10 puntos diseñado para gamificar la experiencia y fidelizar a cada cliente que cruza la puerta."
   },
   gameDemo: {
     title: "Prueba nuestros juegos",

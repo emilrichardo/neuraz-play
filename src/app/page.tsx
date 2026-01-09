@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-neon-green selection:text-black">
       <Navbar />
-      <div className="max-w-[1440px] mx-auto">
+      <div>
         <Hero />
         <Philosophy />
         <Motors />

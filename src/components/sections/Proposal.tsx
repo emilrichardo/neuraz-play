@@ -135,7 +135,7 @@ export function Proposal() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
-            {content.proposal.title}
+            <span dangerouslySetInnerHTML={{ __html: content.proposal.title }} />
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

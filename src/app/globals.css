@@ -57,3 +57,6 @@ body {
 .border-card-border{
   @apply border-gray-600/20;
 }
+.container{
+  @apply max-w-[1440px] mx-auto;
+}

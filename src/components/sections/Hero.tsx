@@ -11,7 +11,7 @@ export function Hero() {
   const { content } = usePersonalization()
 
   return (
-    <section className=" min-h-screen flex items-center overflow-hidden bg-background pt-20">
+    <section className="container min-h-screen flex items-center overflow-hidden bg-background pt-20">
       {/* Background Image */}
       <div className="absolute h-1/2 md:h-full inset-0 z-0 ">
         <Image
