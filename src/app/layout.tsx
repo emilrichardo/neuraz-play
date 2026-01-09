@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Manrope } from "next/font/google";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { PersonalizationProvider } from "@/context/PersonalizationContext";
@@ -25,11 +26,13 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body className={`${manrope.variable} antialiased bg-background text-foreground font-sans`}>
-        <PersonalizationProvider>
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
-        </PersonalizationProvider>
+        <Suspense fallback={null}>
+          <PersonalizationProvider>
+            <SmoothScroll>
+              {children}
+            </SmoothScroll>
+          </PersonalizationProvider>
+        </Suspense>
       </body>
     </html>
   );
