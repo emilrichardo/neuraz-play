@@ -107,6 +107,22 @@ export const RUBROS: Rubro[] = [
   }
 ]
 
+// Client Presets
+const CLIENT_PRESETS: Record<string, { rubro: number, subrubro: number, empresa: string, enfoque: "gamificacion" | "fidelizacion" }> = {
+  dq: {
+    rubro: 1,
+    subrubro: 104,
+    empresa: "Doble Queso",
+    enfoque: "gamificacion"
+  },
+  cd:{
+    rubro: 7,
+    subrubro: 701,
+    empresa: "El Duende",
+    enfoque: "fidelizacion"
+  }
+}
+
 interface PersonalizationContextType {
   rubro: number | null
   subrubro: number | null
@@ -142,33 +158,43 @@ export function PersonalizationProvider({ children }: { children: ReactNode }) {
     const urlEmpresa = searchParams.get("empresa")
     const urlEnfoque = searchParams.get("enfoque")
 
-    if (urlRubro) {
-      setRubroState(Number(urlRubro))
-    } else {
-      const storedRubro = localStorage.getItem("neuraz_rubro")
-      if (storedRubro) setRubroState(Number(storedRubro))
-    }
+    const clientCode = searchParams.get("c")
 
-    if (urlSubrubro) {
-      setSubrubroState(Number(urlSubrubro))
+    if (clientCode && CLIENT_PRESETS[clientCode]) {
+      const preset = CLIENT_PRESETS[clientCode]
+      setRubroState(preset.rubro)
+      setSubrubroState(preset.subrubro)
+      setEmpresaState(preset.empresa)
+      setEnfoqueState(preset.enfoque)
     } else {
-      const storedSubrubro = localStorage.getItem("neuraz_subrubro")
-      if (storedSubrubro) setSubrubroState(Number(storedSubrubro))
-    }
+      if (urlRubro) {
+        setRubroState(Number(urlRubro))
+      } else {
+        const storedRubro = localStorage.getItem("neuraz_rubro")
+        if (storedRubro) setRubroState(Number(storedRubro))
+      }
 
-    if (urlEmpresa) {
-      setEmpresaState(urlEmpresa)
-    } else {
-      const storedEmpresa = localStorage.getItem("neuraz_empresa")
-      if (storedEmpresa) setEmpresaState(storedEmpresa)
-    }
+      if (urlSubrubro) {
+        setSubrubroState(Number(urlSubrubro))
+      } else {
+        const storedSubrubro = localStorage.getItem("neuraz_subrubro")
+        if (storedSubrubro) setSubrubroState(Number(storedSubrubro))
+      }
 
-    if (urlEnfoque === "fidelizacion" || urlEnfoque === "gamificacion") {
-      setEnfoqueState(urlEnfoque)
-    } else {
-      const storedEnfoque = localStorage.getItem("neuraz_enfoque")
-      if (storedEnfoque === "fidelizacion" || storedEnfoque === "gamificacion") {
-        setEnfoqueState(storedEnfoque)
+      if (urlEmpresa) {
+        setEmpresaState(urlEmpresa)
+      } else {
+        const storedEmpresa = localStorage.getItem("neuraz_empresa")
+        if (storedEmpresa) setEmpresaState(storedEmpresa)
+      }
+
+      if (urlEnfoque === "fidelizacion" || urlEnfoque === "gamificacion") {
+        setEnfoqueState(urlEnfoque)
+      } else {
+        const storedEnfoque = localStorage.getItem("neuraz_enfoque")
+        if (storedEnfoque === "fidelizacion" || storedEnfoque === "gamificacion") {
+          setEnfoqueState(storedEnfoque)
+        }
       }
     }
   }, [searchParams])

@@ -119,9 +119,9 @@ export function getContent(rubroId: number | null, subrubroId: number | null, em
   // Gastronomía
   if (rubroId === 1) {
     if (enfoque === "gamificacion") {
-      content.hero.title = `Convertimos comensales en fans de ${empresa || "tu restaurante"}`
+      content.hero.badge = `Sistemas inteligentes de ${enfoque}`
       content.hero.description = "Menús interactivos, reservas con IA y juegos para esperar la comida. Hacemos que ir a comer sea una experiencia inolvidable."
-      content.hero.cta = "Gamificar mi menú"
+      content.hero.cta = `Gamificar ${empresa || 'tu restaurante'}`
       // content.hero.image = "/images/gastronomy-hero.jpg" // Example of dynamic image
 
       content.philosophy.description = `En Neuraz creamos sistemas para que ${empresaName} no solo sirva comida, sino que sirva experiencias. Desde que el cliente reserva hasta que paga y deja su reseña.`
@@ -130,13 +130,17 @@ export function getContent(rubroId: number | null, subrubroId: number | null, em
         "Recomendar platos con IA",
         "Entretener durante la espera",
         "Fidelizar clientes frecuentes",
-        "Aumentar el ticket promedio"
+        "Aumentar el ticket promedio",
+        "Lanzar juegos personalizados de marca"
+
       ]
+      content.proposal.title = `Propuesta de Valor para <span class="text-yellow-500">${empresaName || "tu restaurante"}</span>`
+      content.proposal.description = "Un plan de 10 puntos diseñado para gamificar la experiencia y fidelizar a cada cliente que cruza la puerta."
     } else {
       // Fidelización
-      content.hero.title = `Fideliza a los comensales de ${empresa || "tu restaurante"}`
+      content.hero.badge = `Sistemas de ${enfoque} para ${empresa || "tu restaurante"}`
       content.hero.description = "Programas de puntos digitales, encuestas de satisfacción automáticas y beneficios exclusivos para tus mejores clientes."
-      content.hero.cta = "Crear Club de Beneficios"
+      content.hero.cta = `Fidelizar ${empresa || 'tu restaurante'}`
 
       content.philosophy.description = `Ayudamos a ${empresaName} a conocer y premiar a sus clientes más leales. Transformamos cada visita en una oportunidad de conexión.`
       content.philosophy.features = [
@@ -144,7 +148,7 @@ export function getContent(rubroId: number | null, subrubroId: number | null, em
         "Automatizar saludos de cumpleaños",
         "Encuestas de satisfacción post-visita",
         "Beneficios por frecuencia de visita",
-        "Reservas prioritarias para VIPs"
+        "Reservas prioritarias para VIPs",
       ]
     }
 
@@ -190,18 +194,35 @@ export function getContent(rubroId: number | null, subrubroId: number | null, em
 
   // Alimentos (Carnicería, etc)
   if (rubroId === 7) {
-    content.hero.title = `Más que alimentos, calidad y confianza para ${empresa || "tu comercio"}`
+    content.hero.badge = `Soluciones digitales para ${empresa || "tu comercio"}`
     content.hero.description = "Pedidos por WhatsApp automatizados, trazabilidad con QR y recetas sugeridas por IA."
+
+    content.philosophy.description = `En Neuraz ayudamos a ${empresaName} a modernizar su atención sin perder la cercanía de barrio.`
+    content.philosophy.features = [
+      "Pedidos automáticos por WhatsApp",
+      "Catálogo digital actualizado",
+      "Historial de compras",
+      "Promociones personalizadas",
+      "Gestión de stock simple"
+    ]
 
     if (subrubroId === 701) { // Carnicería
       if (enfoque === "gamificacion") {
+        content.hero.badge = `Experiencia Premium en Carnes`
         content.hero.title = `La mejor carne, la mejor experiencia en ${empresa || "tu carnicería"}`
         content.hero.description = "Sugerencias de cortes por IA, recetas personalizadas y pedidos sin espera."
         content.hero.cta = "Modernizar mi carnicería"
+
+        content.proposal.title = `Estrategia para <span class="text-yellow-500">${empresaName}</span>`
+        content.proposal.description = "Digitaliza tu carnicería y ofrece una experiencia de compra superior."
       } else {
-        content.hero.title = `Clientes de confianza en ${empresa || "tu carnicería"}`
-        content.hero.description = "Pedidos recurrentes simplificados, cuenta corriente digital y ofertas semanales por WhatsApp."
-        content.hero.cta = "Optimizar mis pedidos"
+        content.hero.badge = `Club de Carnicería Digital`
+
+        content.hero.description = "Tus clientes ya usan WhatsApp. Dales la comodidad de pedir su corte favorito en segundos y premia su fidelidad automáticamente."
+        content.hero.cta = "Ver Demo Carnicería"
+
+        content.proposal.title = `Más que clientes, vecinos fieles en <span class="text-yellow-500">${empresaName}</span>`
+        content.proposal.description = "Un sistema pensado para la carnicería de barrio. Sin puntos complicados ni niveles de juego. Solo beneficios reales para quien te elige cada semana."
       }
     }
   }
