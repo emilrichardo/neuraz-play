@@ -108,7 +108,11 @@ const strategies = [
   }
 ]
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function Proposal() {
+  const { content } = usePersonalization()
+
   return (
     <section className="py-24 bg-black/80 relative overflow-hidden">
       {/* Background Elements */}
@@ -131,7 +135,7 @@ export function Proposal() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
-            Estrategia <span className="text-yellow-500">Gamificadora</span>
+            {content.proposal.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +144,7 @@ export function Proposal() {
             transition={{ delay: 0.2 }}
             className="text-gray-400 text-lg max-w-2xl mx-auto"
           >
-            Un plan de 10 puntos diseñado para gamificar la experiencia y fidelizar a cada cliente que cruza la puerta.
+            {content.proposal.description}
           </motion.p>
         </div>
 

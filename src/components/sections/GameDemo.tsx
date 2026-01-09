@@ -18,7 +18,10 @@ const PRIZES = [
   { label: "Bebida Gratis", color: "#00f3ff" },
 ]
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function GameDemo() {
+  const { content } = usePersonalization()
   const [activeTab, setActiveTab] = useState<"roulette" | "board" | "memory" | "trivia" | "mystery" | "dice" | "timing" | "battle">("roulette")
 
   return (
@@ -58,7 +61,7 @@ export function GameDemo() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
-            Experimenta la <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan">Gamificación</span>
+            {content.gameDemo.title}
           </motion.h2>
 
           {/* Tabs */}

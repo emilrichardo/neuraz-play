@@ -6,13 +6,16 @@ import { ArrowRight, Instagram, Linkedin, Twitter, Settings, Link as LinkIcon, T
 import { usePersonalization, RUBROS } from "@/context/PersonalizationContext"
 
 export function Footer() {
-  const { rubro, empresa, setRubro, setEmpresa, copyLink, clearPersonalization } = usePersonalization()
+  const { rubro, subrubro, empresa, enfoque, setRubro, setSubrubro, setEmpresa, setEnfoque, copyLink, clearPersonalization } = usePersonalization()
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     message: ""
   })
   const [showPersonalization, setShowPersonalization] = useState(false)
+
+  const selectedRubro = RUBROS.find(r => r.id === rubro)
+  const selectedSubrubro = selectedRubro?.subrubros?.find(s => s.id === subrubro)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,7 +52,7 @@ export function Footer() {
             </h2>
             <p className="text-gray-400 text-xl max-w-lg mb-8">
               {rubro
-                ? `Soluciones específicas para ${RUBROS.find(r => r.id === rubro)?.label}. Agenda una demo y descubre cómo Neuraz puede transformar tu negocio.`
+                ? `Soluciones específicas para ${selectedRubro?.label}${selectedSubrubro ? ` (${selectedSubrubro.label})` : ""}. Agenda una demo y descubre cómo Neuraz puede transformar tu negocio.`
                 : "¿Listo para el siguiente nivel? Agenda una demo y descubre cómo Neuraz puede transformar tu negocio."
               }
             </p>
@@ -76,6 +79,24 @@ export function Footer() {
               {showPersonalization && (
                 <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-4 max-w-md animate-in fade-in slide-in-from-top-2">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="col-span-1 sm:col-span-2">
+                       <label className="block text-xs text-gray-400 mb-2">Enfoque Principal</label>
+                       <div className="flex bg-black/50 p-1 rounded-lg border border-white/10">
+                         <button
+                           onClick={() => setEnfoque("gamificacion")}
+                           className={`flex-1 py-1.5 text-xs rounded-md transition-all ${enfoque === "gamificacion" ? "bg-neon-green text-black font-bold" : "text-gray-400 hover:text-white"}`}
+                         >
+                           Gamificación
+                         </button>
+                         <button
+                           onClick={() => setEnfoque("fidelizacion")}
+                           className={`flex-1 py-1.5 text-xs rounded-md transition-all ${enfoque === "fidelizacion" ? "bg-neon-cyan text-black font-bold" : "text-gray-400 hover:text-white"}`}
+                         >
+                           Fidelización
+                         </button>
+                       </div>
+                    </div>
+
                     <div>
                       <label className="block text-xs text-gray-400 mb-1">Rubro</label>
                       <select
@@ -89,7 +110,24 @@ export function Footer() {
                         ))}
                       </select>
                     </div>
-                    <div>
+
+                    {selectedRubro?.subrubros && (
+                      <div>
+                        <label className="block text-xs text-gray-400 mb-1">Subrubro</label>
+                        <select
+                          value={subrubro || ""}
+                          onChange={(e) => setSubrubro(e.target.value ? Number(e.target.value) : null)}
+                          className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-neon-green"
+                        >
+                          <option value="">Seleccionar...</option>
+                          {selectedRubro.subrubros.map(s => (
+                            <option key={s.id} value={s.id}>{s.label}</option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
+
+                    <div className={selectedRubro?.subrubros ? "col-span-1 sm:col-span-2" : ""}>
                       <label className="block text-xs text-gray-400 mb-1">Empresa</label>
                       <input
                         type="text"

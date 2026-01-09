@@ -27,7 +27,11 @@ const cases = [
   }
 ]
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function UseCases() {
+  const { content } = usePersonalization()
+
   return (
     <section className="py-24 bg-black/50">
       <div className="container px-4 md:px-6">
@@ -38,7 +42,7 @@ export function UseCases() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Adaptabilidad Total
+            {content.useCases.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +51,7 @@ export function UseCases() {
             transition={{ delay: 0.1 }}
             className="text-gray-400"
           >
-            Transformamos cualquier industria
+            {content.useCases.description}
           </motion.p>
         </div>
 

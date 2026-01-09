@@ -36,7 +36,11 @@ const steps = [
   }
 ]
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function Process() {
+  const { content } = usePersonalization()
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Background Line */}
@@ -50,7 +54,7 @@ export function Process() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Cómo Trabajamos
+            {content.process.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +63,7 @@ export function Process() {
             transition={{ delay: 0.1 }}
             className="text-gray-400 text-lg"
           >
-            De la idea a la realidad en 6 pasos
+            {content.process.description}
           </motion.p>
         </div>
 

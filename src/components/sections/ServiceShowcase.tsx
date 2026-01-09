@@ -2,7 +2,11 @@
 
 import { motion } from "framer-motion"
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function ServiceShowcase() {
+  const { content } = usePersonalization()
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       <div className="container px-4 md:px-6">
@@ -14,11 +18,11 @@ export function ServiceShowcase() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              Experiencias que <br />
+              {content.serviceShowcase.title} <br />
               <span className="text-neon-cyan drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">Cobran Vida</span>
             </h2>
             <p className="text-gray-400 text-lg mb-8">
-              No solo diseñamos interfaces; creamos ecosistemas interactivos. Desde pantallas táctiles en puntos de venta hasta aplicaciones móviles gamificadas, cada píxel está pensado para maximizar el engagement y la conversión.
+              {content.serviceShowcase.description}
             </p>
 
             <div className="grid grid-cols-2 gap-6">

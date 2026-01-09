@@ -4,7 +4,11 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { Brain, Zap } from "lucide-react"
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function Philosophy() {
+  const { content } = usePersonalization()
+
   return (
     <section id="filosofia" className="py-24 bg-background relative overflow-hidden">
       <div className="container px-4 md:px-6">
@@ -17,20 +21,20 @@ export function Philosophy() {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
 
-              <span className="text-neon-violet drop-shadow-[0_0_10px_rgba(176,38,255,0.5)]">Construimos experiencias</span>
+              <span className="text-neon-violet drop-shadow-[0_0_10px_rgba(176,38,255,0.5)]">{content.philosophy.title}</span>
             </h2>
             <p className="text-gray-400 text-lg mb-6">
-              En Neuraz diseñamos y desarrollamos sistemas digitales a medida que combinan tecnología, automatización, gamificación e inteligencia artificial para transformar la forma en que las marcas interactúan con sus clientes.
+              {content.philosophy.description}
             </p>
 
             <div className="space-y-4 mb-8">
               <h3 className="text-xl font-bold text-white">Creamos plataformas inteligentes capaces de:</h3>
               <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> Interactuar con personas</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> Tomar decisiones automáticas</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> Responder en tiempo real</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> Integrarse con cualquier sistema existente</li>
-                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> Escalar y adaptarse a cada negocio</li>
+                {content.philosophy.features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-neon-green" /> {feature}
+                  </li>
+                ))}
               </ul>
             </div>
 

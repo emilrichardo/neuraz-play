@@ -3,7 +3,11 @@
 import { motion } from "framer-motion"
 import { Bot, Brain, Network, Globe, TrendingUp, Sparkles, MessageSquare, Smartphone, QrCode, Monitor, Share2 } from "lucide-react"
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function ChatbotService() {
+  const { content } = usePersonalization()
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Background Elements */}
@@ -28,7 +32,7 @@ export function ChatbotService() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
-            Automatización & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-neon-cyan">Chatbots Inteligentes</span>
+            {content.chatbot.title}
           </motion.h2>
 
           <motion.p
@@ -38,7 +42,7 @@ export function ChatbotService() {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-400"
           >
-            Atención al cliente que nunca se detiene. Mientras tus clientes juegan y se fidelizan, nuestros sistemas automatizados se encargan del resto.
+            {content.chatbot.description}
           </motion.p>
         </div>
 

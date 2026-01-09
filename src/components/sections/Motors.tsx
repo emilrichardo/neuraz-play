@@ -31,7 +31,11 @@ const motors = [
   }
 ]
 
+import { usePersonalization } from "@/context/PersonalizationContext"
+
 export function Motors() {
+  const { content } = usePersonalization()
+
   return (
     <section id="servicios" className="py-24 bg-background relative">
       <div className="container px-4 md:px-6">
@@ -42,7 +46,7 @@ export function Motors() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Nuestros Motores
+            {content.motors.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +55,7 @@ export function Motors() {
             transition={{ delay: 0.1 }}
             className="text-gray-400 text-lg"
           >
-            Tres niveles de potencia para tu negocio
+            {content.motors.description}
           </motion.p>
         </div>
 
