@@ -26,9 +26,9 @@ export default async function Home() {
       <Navbar />
       <div>
         <Hero />
+        <LatestProjects projects={latestProjects} />
         <Philosophy />
         <Motors />
-        <LatestProjects projects={latestProjects} />
         <ServiceShowcase />
         <Proposal />
         <GameDemo />
