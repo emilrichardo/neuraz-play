@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/Button"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
 
 export function Navbar() {
   const { scrollY } = useScroll()
@@ -28,23 +29,23 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {/* Logo reduced by ~30% from h-10 to h-7 */}
-          <a href="/" className="block">
+          <Link href="/" className="block">
             <img src="/neuraz-logo.png" alt="Neuraz Logo" className="h-7 w-auto" />
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="/#filosofia" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</a>
-          <a href="/#servicios" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</a>
-          <a href="/#casos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</a>
-          <a href="/proyectos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</a>
-          <a href="/#about-us" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</a>
-          <a href="/#contacto">
+          <Link href="/#filosofia" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</Link>
+          <Link href="/#servicios" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</Link>
+          <Link href="/#casos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</Link>
+          <Link href="/proyectos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</Link>
+          <Link href="/#about-us" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</Link>
+          <Link href="/#contacto">
             <Button variant="cyber" size="sm" className="h-9">
               Agenda Demo
             </Button>
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -62,16 +63,16 @@ export function Navbar() {
           className="absolute top-full left-0 right-0 bg-black/95 border-b border-white/10 backdrop-blur-xl p-6 md:hidden flex flex-col gap-6 shadow-2xl"
         >
           <nav className="flex flex-col gap-6 items-center">
-            <a href="/#filosofia" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</a>
-            <a href="/#servicios" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</a>
-            <a href="/#casos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</a>
-            <a href="/proyectos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</a>
-            <a href="/#about-us" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</a>
-            <a href="/#contacto" onClick={toggleMenu}>
+            <Link href="/#filosofia" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</Link>
+            <Link href="/#servicios" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</Link>
+            <Link href="/#casos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</Link>
+            <Link href="/proyectos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</Link>
+            <Link href="/#about-us" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</Link>
+            <Link href="/#contacto" onClick={toggleMenu}>
               <Button variant="cyber" size="lg" className="w-full">
                 Agenda Demo
               </Button>
-            </a>
+            </Link>
           </nav>
         </motion.div>
       )}

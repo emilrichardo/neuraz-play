@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/Button"
 import { Bot, Brain, Network, Globe, TrendingUp, Sparkles, MessageSquare, Smartphone, QrCode, Monitor, Share2, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 import { usePersonalization } from "@/context/PersonalizationContext"
 
@@ -53,12 +54,12 @@ export function ChatbotService() {
             transition={{ delay: 0.3 }}
             className="mt-8"
           >
-            <a href="/servicios/chatbots-ia">
+            <Link href="/servicios/chatbots-ia">
               <Button variant="cyber" className="group">
                 Explorar Soluciones de IA
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
+            </Link>
           </motion.div>
         </div>
 

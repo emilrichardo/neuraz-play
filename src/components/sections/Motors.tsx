@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card"
 import { Gamepad2, Monitor, Cpu, Code } from "lucide-react"
+import Link from "next/link"
 
 const motors = [
   {
@@ -51,6 +52,7 @@ export function Motors() {
   return (
     <section id="servicios" className="py-24 bg-background relative">
       <div className="container px-4 md:px-6">
+        {/* ... header ... */}
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +80,7 @@ export function Motors() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <a href={motor.link} className="block h-full">
+              <Link href={motor.link} className="block h-full">
                 <Card className={`h-full bg-card-bg/20  transition-all duration-300 border-gray-200/20 ${motor.borderColor} ${motor.shadow} group relative overflow-hidden`}>
                   <CardHeader>
                     <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 ${motor.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -95,7 +97,7 @@ export function Motors() {
                     </CardDescription>
                   </CardContent>
                 </Card>
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

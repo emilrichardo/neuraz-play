@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/Button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 import { usePersonalization } from "@/context/PersonalizationContext"
 
@@ -28,12 +29,12 @@ export function ServiceShowcase() {
             </p>
 
             <div className="mb-8">
-              <a href="/servicios/desarrollo-web">
+              <Link href="/servicios/desarrollo-web">
                 <Button variant="cyber" className="group">
                   Ver Soluciones Web
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </a>
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-6">

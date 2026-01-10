@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, ArrowUpRight, Layers } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { BehanceProject } from "@/lib/behance"
+import Link from "next/link"
 
 interface LatestProjectsProps {
   projects: BehanceProject[]
@@ -45,12 +46,12 @@ export function LatestProjects({ projects }: LatestProjectsProps) {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <a href="/proyectos">
+            <Link href="/proyectos">
               <Button variant="outline" className="group border-white/20 text-white hover:bg-white/10">
                 Ver todos los proyectos
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
+            </Link>
           </motion.div>
         </div>
 
