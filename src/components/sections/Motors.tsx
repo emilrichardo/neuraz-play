@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card"
-import { Gamepad2, Monitor, Cpu } from "lucide-react"
+import { Gamepad2, Monitor, Cpu, Code } from "lucide-react"
 
 const motors = [
   {
@@ -28,6 +28,14 @@ const motors = [
     color: "text-neon-violet",
     borderColor: "hover:border-neon-violet/50",
     shadow: "hover:shadow-[0_0_30px_rgba(176,38,255,0.2)]"
+  },
+  {
+    icon: Code,
+    title: "Desarrollo Web & Apps",
+    description: "Sitios web de alto impacto, aplicaciones móviles y plataformas a medida. Diseño UX/UI centrado en la conversión y tecnología de vanguardia.",
+    color: "text-blue-400",
+    borderColor: "hover:border-blue-400/50",
+    shadow: "hover:shadow-[0_0_30px_rgba(96,165,250,0.2)]"
   }
 ]
 
@@ -57,7 +65,7 @@ export function Motors() {
           />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {motors.map((motor, index) => (
             <motion.div
               key={index}

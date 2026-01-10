@@ -1,7 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { MonitorPlay, Gamepad2, Star, Gift, QrCode, Receipt, Trophy, Share2, Calendar, BarChart3 } from "lucide-react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { MonitorPlay, Gamepad2, Star, Gift, QrCode, Receipt, Trophy, Share2, Calendar, BarChart3, ChevronDown, ChevronUp } from "lucide-react"
+import { usePersonalization } from "@/context/PersonalizationContext"
 
 const strategies = [
   {
@@ -108,7 +110,69 @@ const strategies = [
   }
 ]
 
-import { usePersonalization } from "@/context/PersonalizationContext"
+function ProposalItem({ item, index }: { item: typeof strategies[0], index: number }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+        isOpen
+          ? "border-yellow-500/50 bg-card-bg/80"
+          : "border-white/10 bg-card-bg/50 hover:border-yellow-500/30 hover:bg-card-bg/60"
+      }`}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-4 text-left"
+      >
+        <div className="flex items-center gap-4">
+          <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+            isOpen ? "bg-yellow-500/20 text-yellow-500" : "bg-yellow-500/10 text-yellow-500/70"
+          }`}>
+            <item.icon className="w-5 h-5" />
+          </div>
+          <h3 className={`text-lg font-bold transition-colors ${
+            isOpen ? "text-yellow-500" : "text-white group-hover:text-yellow-500"
+          }`}>
+            {item.title}
+          </h3>
+        </div>
+        <div className={`text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
+          <ChevronDown className="w-5 h-5" />
+        </div>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-4 pb-4 pt-0 border-t border-white/5">
+              <ul className="space-y-2 mt-4 mb-4">
+                {item.features.map((feature, i) => (
+                  <li key={i} className="text-gray-400 text-sm flex items-start gap-2">
+                    <span className="w-1 h-1 rounded-full bg-yellow-500 mt-2 shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="text-sm font-medium text-yellow-500/80 bg-yellow-500/5 p-3 rounded-lg">
+                👉 {item.benefit}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
 
 export function Proposal() {
   const { content } = usePersonalization()
@@ -148,39 +212,9 @@ export function Proposal() {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4 max-w-5xl mx-auto">
           {strategies.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="flex gap-6 p-6 rounded-xl border border-white/10 bg-card-bg/50 hover:border-yellow-500/50 hover:bg-card-bg/80 transition-all group"
-            >
-              <div className="shrink-0">
-                <div className="w-12 h-12 rounded-lg bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-500 group-hover:scale-110 transition-transform">
-                  <item.icon className="w-6 h-6" />
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-500 transition-colors">
-                  {item.title}
-                </h3>
-                <ul className="space-y-2 mb-4">
-                  {item.features.map((feature, i) => (
-                    <li key={i} className="text-gray-400 text-sm flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-yellow-500 mt-2 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="text-sm font-medium text-yellow-500/80 border-t border-white/5 pt-3">
-                  👉 {item.benefit}
-                </div>
-              </div>
-            </motion.div>
+            <ProposalItem key={index} item={item} index={index} />
           ))}
         </div>
       </div>
