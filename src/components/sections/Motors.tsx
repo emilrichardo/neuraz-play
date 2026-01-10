@@ -11,7 +11,8 @@ const motors = [
     description: "Juegos personalizados con identidad de marca, interacciones en pantallas táctiles y experiencias desde QR. Rankings, desafíos, niveles y recompensas para convertir clientes en participantes activos.",
     color: "text-neon-green",
     borderColor: "hover:border-neon-green/50",
-    shadow: "hover:shadow-[0_0_30px_rgba(0,255,157,0.2)]"
+    shadow: "hover:shadow-[0_0_30px_rgba(0,255,157,0.2)]",
+    link: "/servicios/gamificacion"
   },
   {
     icon: Monitor,
@@ -19,7 +20,8 @@ const motors = [
     description: "Alquiler de pantallas táctiles con software incluido. Menús gamificados, actualizaciones remotas y métricas en tiempo real. El cliente no se preocupa por nada: nosotros lo operamos todo.",
     color: "text-neon-cyan",
     borderColor: "hover:border-neon-cyan/50",
-    shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]"
+    shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]",
+    link: "/servicios/gamificacion" // Linking to gamification as it relates to hardware/screens for now
   },
   {
     icon: Cpu,
@@ -27,7 +29,8 @@ const motors = [
     description: "Respuestas automáticas inteligentes, análisis de comportamiento y personalización en tiempo real. La IA decide qué premio dar y optimiza la experiencia continuamente.",
     color: "text-neon-violet",
     borderColor: "hover:border-neon-violet/50",
-    shadow: "hover:shadow-[0_0_30px_rgba(176,38,255,0.2)]"
+    shadow: "hover:shadow-[0_0_30px_rgba(176,38,255,0.2)]",
+    link: "/servicios/chatbots-ia"
   },
   {
     icon: Code,
@@ -35,7 +38,8 @@ const motors = [
     description: "Sitios web de alto impacto, aplicaciones móviles y plataformas a medida. Diseño UX/UI centrado en la conversión y tecnología de vanguardia.",
     color: "text-blue-400",
     borderColor: "hover:border-blue-400/50",
-    shadow: "hover:shadow-[0_0_30px_rgba(96,165,250,0.2)]"
+    shadow: "hover:shadow-[0_0_30px_rgba(96,165,250,0.2)]",
+    link: "/servicios/desarrollo-web"
   }
 ]
 
@@ -74,19 +78,24 @@ export function Motors() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <Card className={`h-full bg-card-bg/20  transition-all duration-300 border-gray-200/20 ${motor.borderColor} ${motor.shadow} group`}>
-                <CardHeader>
-                  <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 ${motor.color} group-hover:scale-110 transition-transform duration-300`}>
-                    <motor.icon className="w-8 h-8" />
-                  </div>
-                  <CardTitle className="text-xl">{motor.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base text-gray-400">
-                    {motor.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <a href={motor.link} className="block h-full">
+                <Card className={`h-full bg-card-bg/20  transition-all duration-300 border-gray-200/20 ${motor.borderColor} ${motor.shadow} group relative overflow-hidden`}>
+                  <CardHeader>
+                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 ${motor.color} group-hover:scale-110 transition-transform duration-300`}>
+                      <motor.icon className="w-8 h-8" />
+                    </div>
+                    <CardTitle className="text-xl flex items-center justify-between">
+                      {motor.title}
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity text-sm text-gray-400">→</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base text-gray-400">
+                      {motor.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </a>
             </motion.div>
           ))}
         </div>

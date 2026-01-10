@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Bot, Brain, Network, Globe, TrendingUp, Sparkles, MessageSquare, Smartphone, QrCode, Monitor, Share2 } from "lucide-react"
+import { Button } from "@/components/ui/Button"
+import { Bot, Brain, Network, Globe, TrendingUp, Sparkles, MessageSquare, Smartphone, QrCode, Monitor, Share2, ArrowRight } from "lucide-react"
 
 import { usePersonalization } from "@/context/PersonalizationContext"
 
@@ -44,6 +45,21 @@ export function ChatbotService() {
           >
             {content.chatbot.description}
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-8"
+          >
+            <a href="/servicios/chatbots-ia">
+              <Button variant="cyber" className="group">
+                Explorar Soluciones de IA
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
+          </motion.div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">

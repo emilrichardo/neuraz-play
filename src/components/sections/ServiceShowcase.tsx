@@ -1,6 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Button } from "@/components/ui/Button"
+import { ArrowRight } from "lucide-react"
 
 import { usePersonalization } from "@/context/PersonalizationContext"
 
@@ -24,6 +26,15 @@ export function ServiceShowcase() {
             <p className="text-gray-400 text-lg mb-8">
               {content.serviceShowcase.description}
             </p>
+
+            <div className="mb-8">
+              <a href="/servicios/desarrollo-web">
+                <Button variant="cyber" className="group">
+                  Ver Soluciones Web
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
+            </div>
 
             <div className="grid grid-cols-2 gap-6">
               <div className="p-4 rounded-xl border border-white/5 bg-white/5">
