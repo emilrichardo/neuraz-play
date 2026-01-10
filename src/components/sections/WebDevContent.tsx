@@ -3,19 +3,26 @@
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/sections/Footer"
 import { Button } from "@/components/ui/Button"
-import { motion } from "framer-motion"
-import { ArrowRight, Code, Database, Globe, Laptop, Rocket, Zap } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowRight, Code, Database, Globe, Laptop, Rocket, Zap, CheckCircle2, Clock, ShieldCheck, HelpCircle, ChevronDown, BarChart3, Users, Target } from "lucide-react"
 import Image from "next/image"
 import { Motors } from "@/components/sections/Motors"
 import { LatestProjects } from "@/components/sections/LatestProjects"
 import Link from "next/link"
 import { BehanceProject } from "@/lib/behance"
+import { useState } from "react"
 
 interface WebDevContentProps {
   latestProjects: BehanceProject[]
 }
 
 export function WebDevContent({ latestProjects }: WebDevContentProps) {
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-neon-green selection:text-black">
       <Navbar />
@@ -40,28 +47,28 @@ export function WebDevContent({ latestProjects }: WebDevContentProps) {
             >
               <div className="inline-flex items-center rounded-full border border-neon-cyan/30 bg-neon-cyan/10 px-3 py-1 text-sm text-neon-cyan mb-6 backdrop-blur-sm">
                 <span className="flex h-2 w-2 rounded-full bg-neon-cyan mr-2 animate-pulse" />
-                EXPERIENCIAS DIGITALES
+                SOLUCIONES EMPRESARIALES
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
-                Tu Marca, <br />
-                <span className="text-neon-green drop-shadow-[0_0_15px_rgba(0,255,157,0.5)]">Más Allá de una Web</span>
+                Tu Negocio Merece <br />
+                <span className="text-neon-green drop-shadow-[0_0_15px_rgba(0,255,157,0.5)]">Dominar su Mercado</span>
               </h1>
 
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                No hacemos simples páginas web. Creamos ecosistemas digitales que capturan la esencia de tu marca y convierten visitantes en fans. Diseño impactante, velocidad extrema y una experiencia de usuario que enamora.
+                En un mundo digital saturado, tener una web no es suficiente. Construimos herramientas de venta 24/7 que automatizan procesos, captan clientes y posicionan tu marca como líder indiscutible.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <Link href="/#contacto">
                   <Button variant="cyber" size="lg">
-                    Iniciar Proyecto
+                    Agendar Consultoría
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/proyectos">
                   <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
-                    Ver Portafolio
+                    Ver Casos de Éxito
                   </Button>
                 </Link>
               </div>
@@ -95,7 +102,49 @@ export function WebDevContent({ latestProjects }: WebDevContentProps) {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Business Benefits Grid */}
+      <section className="py-24 relative bg-white/5 border-y border-white/5">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              ¿Por Qué <span className="text-neon-violet">Elegirnos?</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              No somos freelancers, somos tu socio tecnológico estratégico.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-8 rounded-2xl bg-black/40 border border-white/10 hover:border-neon-green/50 transition-all duration-300"
+              >
+                <div className="mb-6 p-4 rounded-full bg-neon-green/10 w-fit">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Detail */}
       <section className="py-24 relative">
         <div className="container px-4 md:px-6">
           <motion.div
@@ -105,10 +154,10 @@ export function WebDevContent({ latestProjects }: WebDevContentProps) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Potenciamos tu <span className="text-neon-violet">Presencia Digital</span>
+              Soluciones <span className="text-neon-cyan">Integrales</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              Soluciones diseñadas para destacar en un mercado saturado.
+              Cubrimos todo el espectro digital para que tú solo te preocupes por crecer.
             </p>
           </motion.div>
 
@@ -133,6 +182,60 @@ export function WebDevContent({ latestProjects }: WebDevContentProps) {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Timeline */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-neon-violet/5 to-black" />
+        <div className="container px-4 md:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Nuestro <span className="text-neon-violet">Proceso</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Metodología ágil y transparente. Sin sorpresas, solo resultados.
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Connecting Line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-cyan via-neon-violet to-neon-green hidden md:block" />
+
+            <div className="space-y-12">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className={`flex flex-col md:flex-row gap-8 items-center ${
+                    index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  }`}
+                >
+                  <div className="flex-1 w-full md:w-auto p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-neon-cyan/30 transition-colors">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-neon-cyan/20 flex items-center justify-center text-neon-cyan font-bold">
+                        {index + 1}
+                      </div>
+                      <h3 className="text-xl font-bold">{step.title}</h3>
+                    </div>
+                    <p className="text-gray-400">{step.description}</p>
+                  </div>
+
+                  <div className="w-4 h-4 rounded-full bg-neon-cyan shadow-[0_0_10px_rgba(0,243,255,0.5)] z-10 hidden md:block" />
+
+                  <div className="flex-1 hidden md:block" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -224,26 +327,156 @@ const webProject = {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 bg-white/5 border-y border-white/5">
+        <div className="container px-4 md:px-6 max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Preguntas <span className="text-neon-green">Frecuentes</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="border border-white/10 rounded-xl overflow-hidden bg-black/40"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                >
+                  <span className="font-bold text-lg">{faq.question}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 transition-transform duration-300 ${
+                      openFaq === index ? "rotate-180 text-neon-green" : "text-gray-400"
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openFaq === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="p-6 pt-0 text-gray-400 border-t border-white/5">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-neon-green/5" />
+        <div className="container px-4 md:px-6 relative z-10 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            ¿Listo para <span className="text-neon-green">Escalar?</span>
+          </h2>
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            Deja de perder clientes con una web obsoleta. Hablemos hoy mismo sobre cómo transformar tu presencia digital.
+          </p>
+          <Link href="/#contacto">
+            <Button variant="cyber" size="lg" className="text-lg px-8 py-6">
+              Iniciar Transformación
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       <Motors />
       <Footer />
     </main>
   )
 }
 
+const benefits = [
+  {
+    title: "ROI Garantizado",
+    description: "No diseñamos por diseñar. Cada píxel está pensado para convertir visitas en ventas. Enfocamos el desarrollo en tus KPIs de negocio.",
+    icon: <BarChart3 className="w-8 h-8 text-neon-green" />,
+  },
+  {
+    title: "Velocidad Extrema",
+    description: "El 53% de los usuarios abandona si la web tarda más de 3s. Nuestras webs cargan en milisegundos, mejorando tu SEO y retención.",
+    icon: <Zap className="w-8 h-8 text-neon-cyan" />,
+  },
+  {
+    title: "Soporte Premium",
+    description: "No te dejamos solo tras el lanzamiento. Ofrecemos mantenimiento, actualizaciones y consultoría continua para asegurar tu éxito.",
+    icon: <ShieldCheck className="w-8 h-8 text-neon-violet" />,
+  },
+]
+
 const services = [
   {
-    title: "Frontend Impactante",
-    description: "Interfaces visuales que atrapan. Animaciones suaves y diseño responsivo que funciona perfecto en cualquier dispositivo.",
-    icon: <Code className="w-8 h-8 text-neon-cyan" />,
+    title: "Webs Corporativas",
+    description: "Transmite autoridad y confianza. Diseños premium que reflejan la calidad de tu empresa y atraen a clientes de alto valor.",
+    icon: <Laptop className="w-8 h-8 text-neon-cyan" />,
   },
   {
-    title: "Sistemas Robustos",
-    description: "Lo que no se ve, también importa. Bases de datos seguras y APIs rápidas para que tu negocio nunca se detenga.",
-    icon: <Database className="w-8 h-8 text-neon-green" />,
+    title: "E-Commerce Avanzado",
+    description: "Tiendas que venden solas. Integración de pagos, gestión de stock y embudos de venta optimizados para maximizar el ticket medio.",
+    icon: <Globe className="w-8 h-8 text-neon-green" />,
   },
   {
-    title: "E-Commerce",
-    description: "Vende más con una tienda online optimizada. Pasarelas de pago integradas y gestión de inventario sin fricción.",
-    icon: <Globe className="w-8 h-8 text-neon-violet" />,
+    title: "Landing Pages de Alta Conversión",
+    description: "Páginas específicas para campañas de marketing. Optimizadas para captar leads y ventas directas con tasas de conversión superiores.",
+    icon: <Target className="w-8 h-8 text-neon-violet" />,
+  },
+]
+
+const processSteps = [
+  {
+    title: "Descubrimiento & Estrategia",
+    description: "Analizamos tu negocio, competencia y objetivos. Definimos la arquitectura y la estrategia digital para garantizar el éxito.",
+  },
+  {
+    title: "Diseño UX/UI",
+    description: "Creamos prototipos interactivos. Diseñamos una experiencia visual impactante alineada con tu identidad de marca.",
+  },
+  {
+    title: "Desarrollo & Optimización",
+    description: "Codificamos con las últimas tecnologías (Next.js, React). Optimizamos velocidad, SEO y seguridad al máximo nivel.",
+  },
+  {
+    title: "Lanzamiento & Crecimiento",
+    description: "Desplegamos tu web en servidores de alto rendimiento. Te capacitamos y seguimos optimizando base a datos reales.",
+  },
+]
+
+const faqs = [
+  {
+    question: "¿Cuánto tiempo tarda el desarrollo?",
+    answer: "Depende de la complejidad. Una Landing Page puede estar lista en 1 semana, mientras que una web corporativa completa toma entre 3 y 5 semanas. Siempre definimos un cronograma claro al inicio.",
+  },
+  {
+    question: "¿La web será autoadministrable?",
+    answer: "¡Sí! Integramos paneles de administración intuitivos para que puedas cambiar textos, imágenes y productos sin depender de un programador.",
+  },
+  {
+    question: "¿Incluyen el hosting y dominio?",
+    answer: "Te asesoramos en la compra del dominio y configuramos el hosting en servidores de alta velocidad (Vercel/AWS) para garantizar el mejor rendimiento.",
+  },
+  {
+    question: "¿Hacen optimización SEO?",
+    answer: "Absolutamente. Todas nuestras webs nacen optimizadas para Google: estructura semántica, metaetiquetas, velocidad de carga y sitemaps incluidos.",
   },
 ]
