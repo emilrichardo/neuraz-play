@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { motion } from "framer-motion"
 import { ArrowRight, Trophy, Target, Gamepad2, Users, Star, Crown } from "lucide-react"
 import Image from "next/image"
+import { Motors } from "@/components/sections/Motors"
 
 export default function GamificationPage() {
   return (
@@ -123,6 +124,7 @@ export default function GamificationPage() {
         </div>
       </section>
 
+      <Motors />
       <Footer />
     </main>
   )

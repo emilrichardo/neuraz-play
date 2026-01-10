@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { motion } from "framer-motion"
 import { ArrowRight, Code, Database, Globe, Laptop, Rocket, Zap } from "lucide-react"
 import Image from "next/image"
+import { Motors } from "@/components/sections/Motors"
 
 export default function WebDevPage() {
   return (
@@ -189,6 +190,7 @@ const webProject = {
         </div>
       </section>
 
+      <Motors />
       <Footer />
     </main>
   )

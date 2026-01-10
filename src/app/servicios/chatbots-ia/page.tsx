@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { motion } from "framer-motion"
 import { ArrowRight, Bot, Brain, MessageSquare, Share2, Sparkles, Zap } from "lucide-react"
 import Image from "next/image"
+import { Motors } from "@/components/sections/Motors"
 
 export default function ChatbotsPage() {
   return (
@@ -155,6 +156,7 @@ export default function ChatbotsPage() {
         </div>
       </section>
 
+      <Motors />
       <Footer />
     </main>
   )
