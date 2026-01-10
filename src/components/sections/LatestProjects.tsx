@@ -17,7 +17,7 @@ export function LatestProjects({ projects }: LatestProjectsProps) {
     <section className="py-24 bg-background relative overflow-hidden">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl">
+          <div className="w-full max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export function LatestProjects({ projects }: LatestProjectsProps) {
             transition={{ delay: 0.2 }}
           >
             <Link href="/proyectos">
-              <Button variant="outline" className="group border-white/20 text-white hover:bg-white/10">
+              <Button variant="outline" className="group  border-white/20 text-white hover:bg-white/10">
                 Ver todos los proyectos
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
