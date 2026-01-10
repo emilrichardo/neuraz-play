@@ -2,20 +2,27 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/Button"
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion"
+import { Menu, X, ChevronDown } from "lucide-react"
 import Link from "next/link"
 
 export function Navbar() {
   const { scrollY } = useScroll()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50)
   })
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+
+  const services = [
+    { title: "Desarrollo Web", href: "/servicios/desarrollo-web" },
+    { title: "Chatbots & IA", href: "/servicios/chatbots-ia" },
+    { title: "Gamificación", href: "/servicios/gamificacion" },
+  ]
 
   return (
     <motion.header
@@ -36,8 +43,42 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="/#filosofia" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</Link>
-          <Link href="/#servicios" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</Link>
+          {/* Services Dropdown */}
+          <div
+            className="relative group"
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-neon-green transition-colors py-2">
+              Servicios
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            <AnimatePresence>
+              {isServicesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-56"
+                >
+                  <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl p-2 shadow-2xl overflow-hidden">
+                    {services.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                      >
+                        {service.title}
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <Link href="/#casos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</Link>
           <Link href="/proyectos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</Link>
           <Link href="/#about-us" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</Link>
@@ -60,11 +101,25 @@ export function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-full left-0 right-0 bg-black/95 border-b border-white/10 backdrop-blur-xl p-6 md:hidden flex flex-col gap-6 shadow-2xl"
+          className="absolute top-full left-0 right-0 bg-black/95 border-b border-white/10 backdrop-blur-xl p-6 md:hidden flex flex-col gap-6 shadow-2xl h-[calc(100vh-80px)] overflow-y-auto"
         >
           <nav className="flex flex-col gap-6 items-center">
-            <Link href="/#filosofia" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</Link>
-            <Link href="/#servicios" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</Link>
+            <div className="w-full flex flex-col items-center gap-4">
+              <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">Servicios</p>
+              {services.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  onClick={toggleMenu}
+                  className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+
+            <div className="w-full h-px bg-white/10 my-2" />
+
             <Link href="/#casos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</Link>
             <Link href="/proyectos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</Link>
             <Link href="/#about-us" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</Link>
