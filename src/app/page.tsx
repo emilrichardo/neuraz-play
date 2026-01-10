@@ -14,7 +14,13 @@ import { Results } from "@/components/sections/Results";
 import { AboutUs } from "@/components/sections/AboutUs";
 import { Footer } from "@/components/sections/Footer"
 
-export default function Home() {
+import { getBehanceProjects } from "@/lib/behance"
+import { LatestProjects } from "@/components/sections/LatestProjects"
+
+export default async function Home() {
+  const projects = await getBehanceProjects()
+  const latestProjects = projects.slice(0, 3)
+
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-neon-green selection:text-black">
       <Navbar />
@@ -22,6 +28,7 @@ export default function Home() {
         <Hero />
         <Philosophy />
         <Motors />
+        <LatestProjects projects={latestProjects} />
         <ServiceShowcase />
         <Proposal />
         <GameDemo />

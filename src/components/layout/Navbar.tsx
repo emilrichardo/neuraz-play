@@ -38,6 +38,7 @@ export function Navbar() {
           <a href="/#filosofia" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</a>
           <a href="/#servicios" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</a>
           <a href="/#casos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</a>
+          <a href="/proyectos" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</a>
           <a href="/#about-us" className="text-sm font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</a>
           <a href="/#contacto">
             <Button variant="cyber" size="sm" className="h-9">
@@ -64,6 +65,7 @@ export function Navbar() {
             <a href="/#filosofia" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Filosofía</a>
             <a href="/#servicios" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Servicios</a>
             <a href="/#casos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Casos</a>
+            <a href="/proyectos" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Proyectos</a>
             <a href="/#about-us" onClick={toggleMenu} className="text-lg font-medium text-gray-300 hover:text-neon-green transition-colors">Nosotros</a>
             <a href="/#contacto" onClick={toggleMenu}>
               <Button variant="cyber" size="lg" className="w-full">
